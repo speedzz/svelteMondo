@@ -16,15 +16,28 @@
       }
     }
   </script>
-  
-  <form on:submit|preventDefault={register}>
-    <input type="text" bind:value={username} placeholder="Username">
-    <input type="password" bind:value={password} placeholder="Password">
-    <select bind:value={role}>
-      <option value="" disabled selected>Select Role</option>
-      <option value="admin">Admin</option>
-      <option value="user">User</option>
-    </select>
-    <button type="submit">Register</button>
-  </form>
-  
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        <h5 class="card-title">Register</h5>
+      </div>
+      <div class="card-body">
+        <form on:submit|preventDefault={register}>
+          <div class="mb-3">
+            <input type="text" class="form-control" bind:value={username} placeholder="Username" />
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" bind:value={password} placeholder="Password" />
+          </div>
+          <div class="mb-3">
+            <select class="form-select" bind:value={role}>
+              <option value="" disabled selected>Select Role</option>
+              <option value="user">User</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+      </div>
+     
+    </div>
+  </div>
