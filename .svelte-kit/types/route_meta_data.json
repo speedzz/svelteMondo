@@ -9,6 +9,9 @@
 	"/api/auth/register": [
 		"src/routes/api/auth/register/+server.ts"
 	],
+	"/api/upload": [
+		"src/routes/api/upload/+server.ts"
+	],
 	"/auth/login": [],
 	"/auth/register": [],
 	"/forbidden": [],
