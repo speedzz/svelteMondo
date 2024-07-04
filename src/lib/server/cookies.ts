@@ -1,9 +1,11 @@
 import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const { sign, verify } = jwt;
-
-const SECRET_KEY = 'your_secret_key'; // Use a secure key in production
+const SECRET_KEY = process.env.SECRET_KEY as string;
 
 export function createAuthCookie(id: number, username: string, role: string): string {
   const token = sign({ id, username, role }, SECRET_KEY, { expiresIn: '1h' });
