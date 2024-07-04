@@ -15,6 +15,26 @@
   }
 </script>
 
-<h1>Protected Content</h1>
-<p>Only authenticated admin users can see this. { data.user.username }  </p>
-<button on:click={logout}>Logout</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button class="btn btn-danger" on:click={logout}>Logout</button>
