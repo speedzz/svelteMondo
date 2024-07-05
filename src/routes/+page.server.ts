@@ -5,17 +5,10 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const rootDir = path.resolve(__dirname, '../../../');
+const rootDir = path.resolve(__dirname, '../../');
 const filesDir = path.join(rootDir, 'static/files');
 
 export async function load({ locals }) {
-  if (!locals.user) {
-    throw redirect(302, '/auth/login');
-  }
-
-  if (locals.user.role !== 'admin') {
-    throw redirect(302, '/forbidden');
-  }
 
   try {
     const files = await fs.readdir(filesDir);

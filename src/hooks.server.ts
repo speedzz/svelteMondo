@@ -10,6 +10,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   } else {
     event.locals.user = null;
   }
+  
 
   const response = await resolve(event);
 

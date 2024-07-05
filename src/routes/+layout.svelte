@@ -5,16 +5,13 @@
     import { onMount } from 'svelte';
 
     let { children } = $props();
+    //import 'bootstrap/dist/css/bootstrap.min.css';
 
-    onMount(() => {
-        if (browser) {
-            import('bootstrap/dist/js/bootstrap.bundle.min.js')
-                .then((bootstrap) => {
-                    // Bootstrap JS is now loaded and can be used
-                    // You can initialize specific components here if needed
-                });
-        }
-    });
+    if (browser) {
+        import('bootstrap/dist/js/bootstrap.bundle.min.js').then((module) => {
+            window.bootstrap = module;
+        });
+    }
 </script>
 
 {@render children()}

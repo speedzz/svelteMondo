@@ -7,7 +7,10 @@ export const POST: RequestHandler = async ({ request }) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   try {
-    await db.run('INSERT INTO users (username, password, role) VALUES (?, ?, ?)', [username, hashedPassword, role]);
+    const userCount = await db.get('SELECT COUNT(*) as count FROM users');
+    const userRole = userCount.count === 0 ? 'admin' : role;
+
+    await db.run('INSERT INTO users (username, password, role) VALUES (?, ?, ?)', [username, hashedPassword, userRole]);
     return new Response(JSON.stringify({ message: 'User registered successfully' }), {
       status: 200,
       headers: {

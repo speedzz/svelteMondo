@@ -9,7 +9,7 @@
       body: JSON.stringify({ username, password }),
     });
     if (response.ok) {
-      window.location.href = "/protected";
+      window.location.href = "/";
     } else {
       alert("Login failed");
     }
