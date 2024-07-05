@@ -15,8 +15,8 @@
   );
 
   $: sortedFiles = filteredFiles.sort((a, b) => {
-    const dateA = new Date(a.lastModified);
-    const dateB = new Date(b.lastModified);
+    const dateA = new Date(a.lastModified).getTime();
+    const dateB = new Date(b.lastModified).getTime();
     return sortDirection === 'asc' ? dateA - dateB : dateB - dateA;
   });
 
@@ -85,7 +85,7 @@
         alert('File uploaded successfully');
         // Close the modal
         const modal = document.getElementById('uploadModal');
-        const modalInstance = bootstrap.Modal.getInstance(modal);
+        const modalInstance = (window as any).bootstrap.Modal.getInstance(modal);
         modalInstance.hide();
         // Reset the file input
         fileInput.value = '';
@@ -104,14 +104,14 @@
   onMount(() => {
     // Initialize Bootstrap modal
     const modal = document.getElementById('uploadModal');
-    new bootstrap.Modal(modal);
+    new (window as any).bootstrap.Modal(modal);
   });
 </script>
 
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center">
     <h2>Welcome, {data.user.username}!</h2>
-    <a class="btn btn-danger" href="/auth/logout">Logout</a>
+    <button class="btn btn-danger" on:click={logout}>Logout</button>
   </div>
   {#if isAdmin}
     <div class="card">
@@ -154,19 +154,19 @@
             <div class="d-flex justify-content-end align-items-center m-0 h-100">
               <ul class="pagination pb-0 mb-0">
                 <li class="page-item {currentPage === 1 ? 'disabled' : ''}">
-                  <a class="page-link" href="#" on:click|preventDefault={() => changePage(currentPage - 1)} aria-label="Previous">
+                  <button class="page-link" on:click|preventDefault={() => changePage(currentPage - 1)} aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
-                  </a>
+                  </button>
                 </li>
                 {#each Array(totalPages) as _, i}
                   <li class="page-item {currentPage === i + 1 ? 'active' : ''}">
-                    <a class="page-link" href="#" on:click|preventDefault={() => changePage(i + 1)}>{i + 1}</a>
+                    <button class="page-link" on:click|preventDefault={() => changePage(i + 1)}>{i + 1}</button>
                   </li>
                 {/each}
                 <li class="page-item {currentPage === totalPages ? 'disabled' : ''}">
-                  <a class="page-link" href="#" on:click|preventDefault={() => changePage(currentPage + 1)} aria-label="Next">
+                  <button class="page-link" on:click|preventDefault={() => changePage(currentPage + 1)} aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
