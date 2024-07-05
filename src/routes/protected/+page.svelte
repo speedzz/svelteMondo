@@ -110,8 +110,8 @@
 
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center">
-    <h2>Welcome, {data.user.name}!</h2>
-    <button class="btn btn-danger" on:click={logout}>Logout</button>
+    <h2>Welcome, {data.user.username}!</h2>
+    <a class="btn btn-danger" href="/auth/logout">Logout</a>
   </div>
   {#if isAdmin}
     <div class="card">

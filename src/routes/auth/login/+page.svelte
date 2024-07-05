@@ -16,8 +16,8 @@
   }
 </script>
 
-<div class="container d-flex justify-content-center align-items-center vh-100">
-  <div class="card" style="width: 18rem;">
+<div class="container d-flex justify-content-center align-items-center vh-100 flex-column">
+  <div class="card col-md-3">
     <div class="card-header">
       <h5 class="card-title">Login</h5>
     </div>
@@ -32,8 +32,8 @@
         <button type="submit" class="btn btn-primary w-100">Login</button>
       </form>
     </div>
-    <div class="card-footer text-center">
-      <a href="/auth/register" class="btn btn-link decoration-none mt-3"> Register </a>
-    </div>
+  </div>
+  <div class="card-footer text-center col-md-3">
+    <a href="/auth/register" class="btn btn-success decoration-none mt-3 w-100"> Register </a>
   </div>
 </div>

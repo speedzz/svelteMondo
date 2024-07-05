@@ -23,7 +23,7 @@ export async function load({ locals }) {
       files.map(async (file) => {
         const stats = await fs.stat(path.join(filesDir, file));
         return {
-          name: file,
+          name: path.parse(file).name, // Trim the extension
           size: stats.size,
           lastModified: stats.mtime
         };
