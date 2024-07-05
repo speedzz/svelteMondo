@@ -1,5 +1,6 @@
 database.sqlite
 .svelte-kit
+static/files/*
 
 # Logs
 logs
